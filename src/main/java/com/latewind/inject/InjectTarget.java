@@ -10,7 +10,4 @@ public class InjectTarget {
 		return "InjectTarget [name=" + name + "]";
 	}
 	
-	
-	
-	
 }
