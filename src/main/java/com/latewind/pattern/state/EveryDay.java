@@ -2,7 +2,7 @@ package com.latewind.pattern.state;
 
 import java.time.LocalDateTime;
 
-public class EveryDay {
+public class EveryDay implements StateContext {
 	private LocalDateTime time;
 	
 	private TimeStatus timeStatus;
