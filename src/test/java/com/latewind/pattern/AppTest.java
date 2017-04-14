@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import com.latewind.pattern.behavioral.chain.BaseLogger;
+import com.latewind.pattern.behavioral.chain.Logger;
 import com.latewind.pattern.behavioral.command.Commend;
 import com.latewind.pattern.behavioral.command.Invoker;
 import com.latewind.pattern.behavioral.command.Receiver;
@@ -259,8 +261,11 @@ public class AppTest extends TestCase {
 		Employee king= new Employee("King", true, subEmployees);
 		System.out.println(king.toString());
 		
-		
-		
+		System.out.println("==================Chain of Responsibility Pattern=====================");
+		BaseLogger logger=Logger.getLogger();
+		logger.log(BaseLogger.ERROR, "Error log");
+		logger.log(BaseLogger.DEBUG, "Debug log");
+		logger.log(BaseLogger.INFO, "Info log");
 		
 		
 		
