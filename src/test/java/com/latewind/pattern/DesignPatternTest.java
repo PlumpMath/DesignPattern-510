@@ -1,12 +1,14 @@
 package com.latewind.pattern;
 
-import java.io.Console;
-import java.lang.reflect.InvocationTargetException;
+import static org.junit.Assert.*;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+
+import org.junit.Test;
 
 import com.latewind.pattern.behavioral.chain.BaseLogger;
 import com.latewind.pattern.behavioral.chain.Logger;
@@ -65,53 +67,39 @@ import com.latewind.pattern.structural.facade.Facade;
 import com.latewind.pattern.structural.facade.Hstock;
 import com.latewind.pattern.structural.proxy.ProxyPursure;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+public class DesignPatternTest {
 
-/**
- * Unit test for simple App.
- */
-public class AppTest extends TestCase {
-	/**
-	 * Create the test case
-	 *
-	 * @param testName
-	 *            name of the test case
-	 */
-	public AppTest(String testName) {
-		super(testName);
+	@Test
+	public void test() {
+		fail("Not yet implemented");
 	}
 
-	/**
-	 * @return the suite of tests being tested
-	 */
-	public static Test suite() {
-		return new TestSuite(AppTest.class);
+	@Test
+	public void testAbstractFactory() {
+		System.out.println("==================Abstract Factory Pattern=====================");
+		AbstractFactory houseFactory = FactoryProducer.getHouseFactory();
+		House bHouse = houseFactory.getHouse("Bungalow");
+		bHouse.display();
 	}
 
-	/**
-	 * Rigourous Test :-)
-	 * 
-	 * @throws CloneNotSupportedException
-	 * @throws SecurityException
-	 * @throws NoSuchMethodException
-	 * @throws InvocationTargetException
-	 * @throws IllegalArgumentException
-	 * @throws IllegalAccessException
-	 */
-	public void testFactory() throws CloneNotSupportedException, NoSuchMethodException, SecurityException,
-			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		assertTrue(true);
+	
+	@Test
+	public void testSimplePattern() {
 		System.out.println("============Samile Factory Pattern=============");
 		Operation operation = SimpleFactory.getOperation("+").setValue(1, 2);
 		System.out.println(operation.gerResult());
+	}
 
+	@Test
+	public void testFactoryMethod() {
 		System.out.println("============Factory Method Pattern=============");
 		PlusFactoryMethod plusFactoryMethod = new PlusFactoryMethod();
 		Operation addOperation = plusFactoryMethod.getOperation();
 		System.out.println(addOperation.setValue(1.0, 2.0).gerResult());
+	}
 
+	@Test
+	public void testStrategy() {
 		System.out.println("================Strategy Pattern=====================");
 		StrategyContext sc = new StrategyContext(new PlusOperation());
 		System.out.println(sc.executeStrategy(1, 2));
@@ -122,12 +110,18 @@ public class AppTest extends TestCase {
 		wd.decorator(house);
 		dd.decorator(wd);
 		dd.display();
+	}
 
+	@Test
+	public void testProxyPattern() {
 		System.out.println("==================Test Proxy=====================");
 		ProxyPursure proxyPursure = new ProxyPursure("美眉");
 		proxyPursure.giveFlower();
 		proxyPursure.giveMoney();
+	}
 
+	@Test
+	public void testPrototype() throws CloneNotSupportedException {
 		System.out.println("==================Prototype=====================");
 
 		Resume resume = new Resume();
@@ -139,22 +133,34 @@ public class AppTest extends TestCase {
 		System.out.println(resume);
 
 		System.out.println(other);
+	}
 
+	@Test
+	public void testTemplatePattern() {
 		System.out.println("==================Template Pattern=====================");
 		Game game = new FootBallGame();
 		game.runGame();
+	}
 
+	@Test
+	public void testFacadePattern() {
 		System.out.println("==================Facade Pattern=====================");
 		Facade facade = new Facade(new Astock(), new Hstock());
 		facade.in();
 		facade.out();
+	}
 
+	@Test
+	public void testBuilderPattern() {
 		System.out.println("==================Builder Pattern=====================");
 		Director director = new Director(new LaptopBuilder());
 		director.constructComputer();
 		Computer computer = director.getComputer();
 		System.out.println(computer.toString());
+	}
 
+	@Test
+	public void testObserverPattern() {
 		System.out.println("==================Observer Pattern=====================");
 		Reminder reminder = new IamReminder();
 
@@ -165,22 +171,26 @@ public class AppTest extends TestCase {
 		reminder.attach(stockObserver);
 		reminder.attach(mObserver);
 		reminder.notice();
+	}
 
-		System.out.println("==================Abstract Factory Pattern=====================");
-		AbstractFactory houseFactory = FactoryProducer.getHouseFactory();
-		House bHouse = houseFactory.getHouse("Bungalow");
-		bHouse.display();
-
+	@Test
+	public void testStatePattern() {
 		System.out.println("==================State Pattern=====================");
 		EveryDay everyDay = new EveryDay(LocalDateTime.now());
 		everyDay.done();
+	}
 
+	@Test
+	public void testAdapterPattern() {
 		System.out.println("==================Adapter Pattern=====================");
 		Coach coach = new Coach(new Forward());
 		coach.attackAction();
 		coach.setPlayer(new Translater(new ForeignPlayer()));
 		coach.attackAction();
+	}
 
+	@Test
+	public void testMementoPattern() {
 		System.out.println("==================Memento Pattern=====================");
 		Random random = new Random();
 		CareTaker careTaker = new CareTaker();
@@ -205,7 +215,10 @@ public class AppTest extends TestCase {
 
 		role.resumeStatus(careTaker.getMemento(0));
 		System.out.println(role);
+	}
 
+	@Test
+	public void testBridgePattern() {
 		System.out.println("==================Bridge Pattern=====================");
 
 		Phone iPhone = new IPhone();
@@ -218,7 +231,10 @@ public class AppTest extends TestCase {
 		Phone huaWei = new HuaWei();
 		huaWei.install(new WeChatApp());
 		huaWei.runApp();
+	}
 
+	@Test
+	public void testMediator() {
 		System.out.println("==================Mediator Pattern=====================");
 		Mediator chatRoom = new ChatRoom();
 
@@ -229,7 +245,10 @@ public class AppTest extends TestCase {
 		Member ww = new OrdMember(chatRoom, "王五");
 
 		zs.send("大家好，我是张三，刚来到这个群");
+	}
 
+	@Test
+	public void testCommend() {
 		System.out.println("==================Commend Pattern=====================");
 
 		Receiver receiver = new Receiver();
@@ -240,38 +259,44 @@ public class AppTest extends TestCase {
 		invoker.executeCmd(runCommend);
 
 		invoker.executeCmd(stopCommend);
+	}
 
+	@Test
+	public void testSingelPattern() {
 		System.out.println("==================Single Pattern=====================");
 		Single single = Single.getInstance();
 		single.show();
+	}
 
+	@Test
+	public void testVisitor() {
 		System.out.println("==================Visitor Pattern=====================");
-		Person chairman=new Chairman();
-		Person  citizen=new Citizen();
-		Visitor visitor=new Interviewer();
+		Person chairman = new Chairman();
+		Person citizen = new Citizen();
+		Visitor visitor = new Interviewer();
 		chairman.accept(visitor);
 		citizen.accept(visitor);
-		
+	}
+
+	@Test
+	public void testComposite() {
 		System.out.println("==================Composite Pattern=====================");
 		Employee tom = new Employee("Tom", false, new ArrayList<Employee>(0));
 		Employee david = new Employee("David", false, new ArrayList<Employee>(0));
 		Employee jim = new Employee("Jim", false, new ArrayList<Employee>(0));
-		List<Employee> subEmployees= new ArrayList<>(3);
-		Collections.addAll(subEmployees, tom,david,jim);
-		Employee king= new Employee("King", true, subEmployees);
+		List<Employee> subEmployees = new ArrayList<>(3);
+		Collections.addAll(subEmployees, tom, david, jim);
+		Employee king = new Employee("King", true, subEmployees);
 		System.out.println(king.toString());
-		
-		System.out.println("==================Chain of Responsibility Pattern=====================");
-		BaseLogger logger=Logger.getLogger();
+	}
+	
+	
+	@Test
+	public void testChainPattern() {
+		BaseLogger logger = Logger.getLogger();
 		logger.log(BaseLogger.ERROR, "Error log");
 		logger.log(BaseLogger.DEBUG, "Debug log");
 		logger.log(BaseLogger.INFO, "Info log");
-		
-		
-		
-		
-		
-		
-		
 	}
+
 }
