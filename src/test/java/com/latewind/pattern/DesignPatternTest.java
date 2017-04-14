@@ -69,6 +69,7 @@ import com.latewind.pattern.structural.proxy.ProxyPursure;
 
 public class DesignPatternTest {
 
+	
 	@Test
 	public void test() {
 		fail("Not yet implemented");
