@@ -1,7 +1,11 @@
 package com.latewind.pattern;
 
+import java.io.Console;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import com.latewind.pattern.behavioral.command.Commend;
@@ -49,6 +53,7 @@ import com.latewind.pattern.structural.bridge.IPhone;
 import com.latewind.pattern.structural.bridge.Phone;
 import com.latewind.pattern.structural.bridge.WeChatApp;
 import com.latewind.pattern.structural.bridge.WeiboApp;
+import com.latewind.pattern.structural.composite.Employee;
 import com.latewind.pattern.structural.decorator.Bungalow;
 import com.latewind.pattern.structural.decorator.DoorDecorator;
 import com.latewind.pattern.structural.decorator.House;
@@ -244,6 +249,23 @@ public class AppTest extends TestCase {
 		Visitor visitor=new Interviewer();
 		chairman.accept(visitor);
 		citizen.accept(visitor);
+		
+		System.out.println("==================Composite Pattern=====================");
+		Employee tom = new Employee("Tom", false, new ArrayList<Employee>(0));
+		Employee david = new Employee("David", false, new ArrayList<Employee>(0));
+		Employee jim = new Employee("Jim", false, new ArrayList<Employee>(0));
+		List<Employee> subEmployees= new ArrayList<>(3);
+		Collections.addAll(subEmployees, tom,david,jim);
+		Employee king= new Employee("King", true, subEmployees);
+		System.out.println(king.toString());
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 	}
